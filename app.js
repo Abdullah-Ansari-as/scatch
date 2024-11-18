@@ -8,6 +8,7 @@ const ownersRouter = require('./routes/ownersRouter')
 const productsRouter = require('./routes/productsRouter')
 const usersRouter = require('./routes/usersRouter')
 
+require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.use(express.json());

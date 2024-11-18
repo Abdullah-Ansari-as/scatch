@@ -11,8 +11,7 @@ const userSchema = mongoose.Schema({
     cart: {
         type: Array,
         default: []
-    },
-    isadmin: Boolean,
+    }, 
     orders: {
         type: Array,
         default: []

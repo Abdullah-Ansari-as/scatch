@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
+const config = require('config');
 
-mongoose.connect("mongodb://127.0.0.1:27017/scatch")
+const dbgr = require('debug') ("development:mongoose");
+// So, basically to setup env variable in windows type this command ---> $env:DEBUG="development"
+// And to remove the env setup type this ---> Remove-Item Env:DEBUG
+
+mongoose
+    .connect(`${config.get("MONGODB_URI")}/scatch`)
     .then(() => {
-        console.log("connected")
+        dbgr("connected")
     })
     .catch((err) => {
-        console.log(err)
+        dbgr(err)
     })
 
 module.exports = mongoose.connection;
