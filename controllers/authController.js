@@ -22,12 +22,10 @@ module.exports.registerUser = async (req, res) => {
  
                     let token = generateToken(user)
                     res.cookie("token", token);
-                    res.send("user created successfully")
+                    res.redirect("/shop");
                 }
             })
-        })
-
-
+        });
 
     } catch (error) {
         res.send(error.message);
@@ -45,9 +43,15 @@ module.exports.loginUser = async (req, res) => {
         if(result){
             const token = generateToken(user);
             res.cookie("token",token)
-            res.send("you can login")
+            res.redirect("/shop");
         } else {
-            res.send("Email or password is incorrect");
+            req.flash("error", "Email or Password incorrect");
+            return res.redirect("/");
         }
     })
+};
+
+module.exports.logout = function (req, res) {
+    res.cookie("token", "");
+    res.redirect("/");
 };

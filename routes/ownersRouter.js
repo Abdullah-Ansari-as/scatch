@@ -28,4 +28,9 @@ router.get('/', (req, res) => {
     res.send("hey, ownerRouting is working");
 });
 
+router.get('/admin', (req, res) => {
+    let success = req.flash("success");
+    res.render("createproducts", {success});
+});
+
 module.exports = router;
