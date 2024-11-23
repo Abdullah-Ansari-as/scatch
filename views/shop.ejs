@@ -1,4 +1,23 @@
 <%- include('./partials/header') %>
+
+<% if(success.length > 0) { %>
+  <div id="alert" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500">
+      <span class="inline-block mt-1 mb-1 text-white">
+          <%= success %>
+      </span>
+  </div>
+
+  <script>
+      // Automatically remove the alert after 2 seconds
+      setTimeout(() => {
+          const alert = document.getElementById('alert');
+          if (alert) {
+              alert.style.display = 'none'; // Hide the alert
+          }
+      }, 2000);
+  </script>
+<% } %>
+
 <div class="w-full h-screen flex items-start px-20 py-20">
   <div class="w-[25%] flex h-screen flex-col items-start">
     <div class="flex items-center gap-2">
@@ -33,7 +52,7 @@
                     <h3><%= curProduct.name %></h3>
                     <h4>Rs: <%= curProduct.price %></h4>
                 </div>
-                <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="">
+                <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="/addtocart/<%= curProduct._id %>">
                     <i class="ri-add-line"></i>
                 </a>
             </div>

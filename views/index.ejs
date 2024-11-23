@@ -1,12 +1,23 @@
 <%- include('./partials/header') %>
 
     <% if(error.length>0){ %>
-        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+        <div id="alert" class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
             <span class="inline-block mt-1 mb-1 text-white">
                 <%= error %>
             </span>
         </div>
-        <% } %>
+
+        <script>
+            // Automatically remove the alert after 2 seconds
+            setTimeout(() => {
+                const alert = document.getElementById('alert');
+                if (alert) {
+                    alert.style.display = 'none'; // Hide the alert
+                }
+            }, 2000);
+        </script>
+
+    <% } %>
         
             <div class="w-full h-screen flex px-20">
                 <div class="w-1/2 flex items-center justify-center h-screen">
